@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { StyleSheet, FlatList, ActivityIndicator, View } from 'react-native';
+import { footer } from './footer';
 import homeService from './homeService'
 
 import LinkPost from './LinkPost'
@@ -26,14 +27,7 @@ export default function Home(){
         setLoading(false)
     }
 
-    const renderFooter = () =>{
-        if (isLoading) return null
-        return (
-            <View style={styles.footerLoading}>
-              <ActivityIndicator size="large" />
-            </View>
-          );
-    }
+    const renderFooter = footer(isLoading)
 
     if(isLoading){
         return(
@@ -56,7 +50,7 @@ export default function Home(){
     }
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
     container: {
       backgroundColor: '#fff',
     },
@@ -66,7 +60,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    footerLoading:{
-        margin: 20
-    }
-  });
+});
+
+

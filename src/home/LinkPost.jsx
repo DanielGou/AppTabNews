@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function LinkPost({ post }){
+    
     function publishedAt(){
         let published_At = new Date(post.item.published_at);
         let actualDate = new Date();
