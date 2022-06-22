@@ -1,6 +1,6 @@
 import { ActivityIndicator, View, StyleSheet } from 'react-native';
 
-export function footer(isLoading) {
+export function Footer(isLoading) {
     return () => {
         if (isLoading)
             return null;

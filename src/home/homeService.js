@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default class Home{
+export default class HomeService{
     constructor(){
         this.axiosService = axios.create({
             'headers': {
@@ -10,11 +10,6 @@ export default class Home{
     }
 
     async getListPosts(page){
-        const data = await fetch('http://www.tabnews.com.br/api/v1/contents?page=1', {
-            mode: 'no-cors'
-        })
-
-        //console.log(data)
         
         return this.axiosService.get(`http://www.tabnews.com.br/api/v1/contents?page=${page}`)
     }

@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { StyleSheet, FlatList, ActivityIndicator, View } from 'react-native';
-import { footer } from './footer';
-import homeService from './homeService'
+import homeService from './HomeService'
+import { publishedAt } from './publishedAt';
 
-import LinkPost from './LinkPost'
+import LinkPost from './components/LinkPost'
+import { Footer } from './components/Footer';
 
 export default function Home(){
     let homeApi = new homeService()
@@ -18,16 +19,28 @@ export default function Home(){
 
     async function loadListPosts(){
         let listPosts = (await homeApi.getListPosts(page)).data
+
+        const listPostFormatted = listPosts.map((post)=>{
+            return{
+                id: post.id,
+                title: post.title,
+                username: post.username,
+                children_deep_count: post.children_deep_count,
+                slug: post.slug,
+                publishedAt: publishedAt(post)
+            }
+        })
+        
         if(posts.length > 0){
-            setPosts([...posts , ...listPosts])
+            setPosts([...posts , ...listPostFormatted])
         }else{
-            setPosts(listPosts)
+            setPosts(listPostFormatted)
         }
         setPage(page+1)
         setLoading(false)
     }
 
-    const renderFooter = footer(isLoading)
+    const renderFooter = Footer(isLoading)
 
     if(isLoading){
         return(
