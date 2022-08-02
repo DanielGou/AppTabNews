@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot Home 1`] = `
+<View
+  style={
+    Object {
+      "display": "flex",
+      "flexDirection": "row",
+      "margin": 15,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 17,
+        "fontWeight": "bold",
+      }
+    }
+  >
+    1
+    .
+  </Text>
+  <View
+    style={
+      Object {
+        "marginLeft": 5,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 17,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Titulo
+    </Text>
+    <View
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <Text>
+        0 comentarios
+         comentários  ·
+      </Text>
+      <Text
+        style={
+          Object {
+            "marginLeft": 5,
+          }
+        }
+      >
+        Daniel
+          ·
+      </Text>
+      <Text
+        style={
+          Object {
+            "marginLeft": 5,
+          }
+        }
+      >
+        1 hora atrás
+      </Text>
+    </View>
+  </View>
+</View>
+`;

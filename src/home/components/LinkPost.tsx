@@ -1,6 +1,7 @@
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function LinkPost({ post }){
+export default function LinkPost({ post }: { post: any; }): JSX.Element{
     const { title, username, children_deep_count, publishedAt } = post.item
  
     return(
