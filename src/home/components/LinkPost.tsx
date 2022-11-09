@@ -1,12 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-export default function LinkPost({ post }: { post: any; }): JSX.Element{
-    const { title, username, children_deep_count, publishedAt } = post.item
+export default function LinkPost(props:any): JSX.Element{
+    const { title, username, children_deep_count, publishedAt } = props.post.item
  
     return(
-        <View style={styles.wrapperLinkPost}>
-            <Text style={styles.title}>{post.index + 1}.</Text>
+        <TouchableOpacity style={styles.wrapperLinkPost} onPress={()=>{
+            props.navigation.navigate('post',{
+                username: props.post.username,
+                slug: props.post.slug
+            })
+        }}>
+            <Text style={styles.title}>{props.post.index + 1}.</Text>
             <View style={styles.ml5}>
                 <Text style={styles.title}>{title}</Text>
                 <View style={styles.wrapperInfoPost}>
@@ -15,7 +20,7 @@ export default function LinkPost({ post }: { post: any; }): JSX.Element{
                     <Text style={styles.ml5}>{publishedAt}</Text>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

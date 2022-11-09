@@ -5,20 +5,8 @@ export function publishedAt(published_at, actualDate = new Date()) {
         return 'the parameters do not have a Date type'
     } 
     
-    const utcPublished_At = Date.UTC(
-        published_at.getFullYear(), 
-        published_at.getMonth(), 
-        published_at.getDate(), 
-        published_at.getHours(),
-        published_at.getMinutes()
-    );
-    const utcActualDate = Date.UTC(
-        actualDate.getFullYear(), 
-        actualDate.getMonth(), 
-        actualDate.getDate(), 
-        actualDate.getHours(),
-        actualDate.getMinutes()
-    );
+    const utcPublished_At = getUtcDate(published_at)
+    const utcActualDate = getUtcDate(actualDate)
 
     let result = ((utcActualDate - utcPublished_At) / (1000 * 60));
 
@@ -37,4 +25,14 @@ export function publishedAt(published_at, actualDate = new Date()) {
     let dias = `${Math.floor(result / 60 / 24)} `;
 
     return `${dias + (dias >= 2 ? 'dias' : 'dia')} atrás`;
+}
+
+function getUtcDate(data){
+    return Date.UTC(
+        data.getFullYear(), 
+        data.getMonth(), 
+        data.getDate(), 
+        data.getHours(),
+        data.getMinutes()
+    )
 }

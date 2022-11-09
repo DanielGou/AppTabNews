@@ -5,7 +5,7 @@ import HomeService from './HomeService'
 import LinkPost from './components/LinkPost'
 import {Footer} from './components/Footer';
 
-export default function Home() {
+export default function Home({ navigation}: any): JSX.Element {
     let homeService = new HomeService()
 
     const [posts, setPosts] = useState<any>([])
@@ -39,7 +39,7 @@ export default function Home() {
             <FlatList
                 style={styles.container}
                 data={posts}
-                renderItem={(post) => <LinkPost post={post} />}
+                renderItem={(post) => <LinkPost post={post} navigation={navigation} />}
                 keyExtractor={item => item.id}
                 onEndReached={loadListPosts}
                 onEndReachedThreshold={0.1}
